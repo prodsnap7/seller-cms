@@ -5,6 +5,7 @@ import { payloadCloud } from '@payloadcms/plugin-cloud';
 import BeforeDashboard from './components/BeforeDashboard';
 import { Posts } from './collections/Posts';
 import { Tags } from './collections/Tags';
+import Media from './collections/Media';
 
 export default buildConfig({
   admin: {
@@ -16,7 +17,7 @@ export default buildConfig({
     }
   },
   collections: [
-    Users, Posts, Tags
+    Users, Posts, Tags, Media
   ],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),

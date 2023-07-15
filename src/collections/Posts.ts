@@ -9,6 +9,9 @@ export const Posts: CollectionConfig = {
     useAsTitle: 'title',
     defaultColumns: ['title', 'author', 'category', 'tags', 'status']
   },
+  access: {
+    read: () => true,
+  },
   fields: [
     {
       name: 'postMeta',
@@ -38,6 +41,42 @@ export const Posts: CollectionConfig = {
     {
       name: 'title',
       type: 'text',
+      required: true,
+    },
+    {
+      name: 'id',
+      type: 'text',
+      required: true,
+      unique: true,
+    },
+    {
+      name: 'hero',
+      type: 'upload',
+      relationTo: 'media',
+    },
+    {
+      name: 'intro',
+      type: 'richText',
+    },
+    {
+      name: 'tableofcontents',
+      type: 'array',
+      fields: [
+        {
+          name: 'title',
+          type: 'text',
+        },
+        {
+          name: 'subtitle',
+          type: 'array',
+          fields: [
+            {
+              name: 'title',
+              type: 'text',
+            }
+          ]
+        }
+      ]
     },
     {
       name: 'layout',
@@ -47,6 +86,24 @@ export const Posts: CollectionConfig = {
         Content,
         Alert
       ],
+    },
+    {
+      name: 'template',
+      type: 'select',
+      options: [
+        {
+          value: 'guide',
+          label: 'Guide',
+        },
+        {
+          value: 'regular',
+          label: 'Regular',
+        },
+      ],
+      defaultValue: 'regular',
+      admin: {
+        position: 'sidebar',
+      }
     },
     {
       name: 'status',

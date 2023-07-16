@@ -13,7 +13,7 @@ export default buildConfig({
     components: {
       // The BeforeDashboard component renders the 'welcome' block that you see after logging into your admin panel.
       // Feel free to delete this at any time. Simply remove the line below and the import BeforeDashboard statement on line 5.
-      beforeDashboard: [BeforeDashboard],
+      // beforeDashboard: [BeforeDashboard],
     }
   },
   collections: [
@@ -27,5 +27,6 @@ export default buildConfig({
   },
   plugins: [
     payloadCloud()
-  ]
+  ],
+  serverURL: process.env.SERVER_URL || 'http://localhost:5173',
 });

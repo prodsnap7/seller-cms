@@ -28,5 +28,4 @@ export default buildConfig({
   plugins: [
     payloadCloud()
   ],
-  serverURL: process.env.SERVER_URL || 'http://localhost:5173',
 });

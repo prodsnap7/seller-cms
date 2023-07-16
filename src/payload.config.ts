@@ -5,6 +5,7 @@ import { payloadCloud } from '@payloadcms/plugin-cloud';
 import BeforeDashboard from './components/BeforeDashboard';
 import { Posts } from './collections/Posts';
 import { Tags } from './collections/Tags';
+import Media from './collections/Media';
 
 export default buildConfig({
   admin: {
@@ -12,11 +13,11 @@ export default buildConfig({
     components: {
       // The BeforeDashboard component renders the 'welcome' block that you see after logging into your admin panel.
       // Feel free to delete this at any time. Simply remove the line below and the import BeforeDashboard statement on line 5.
-      beforeDashboard: [BeforeDashboard],
+      // beforeDashboard: [BeforeDashboard],
     }
   },
   collections: [
-    Users, Posts, Tags
+    Users, Posts, Tags, Media
   ],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),
@@ -26,5 +27,6 @@ export default buildConfig({
   },
   plugins: [
     payloadCloud()
-  ]
+  ],
+  serverURL: process.env.SERVER_URL || 'http://localhost:5173',
 });

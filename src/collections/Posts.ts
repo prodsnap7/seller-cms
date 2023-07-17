@@ -2,6 +2,7 @@ import { CollectionConfig } from 'payload/types';
 import Quote from '../blocks/Quote';
 import Content from '../blocks/Content';
 import Alert from '../blocks/Alert';
+import { RowLabelArgs } from 'payload/dist/admin/components/forms/RowLabel/types';
 
 export const Posts: CollectionConfig = {
   slug: 'posts',
@@ -61,10 +62,25 @@ export const Posts: CollectionConfig = {
     {
       name: 'tableofcontents',
       type: 'array',
+      label: 'Table of Contents',
+      labels: {
+        singular: 'Table of Content',
+        plural: 'Table of Contents',
+      },
+      admin: {
+        components: {
+          RowLabel: ({ data }: RowLabelArgs) => {
+            return data?.title as string;
+          },
+        },
+      },
       fields: [
         {
           name: 'title',
           type: 'text',
+          admin: {
+
+          }
         },
         {
           name: 'subtitle',
